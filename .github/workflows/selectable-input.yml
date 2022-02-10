@@ -1,0 +1,22 @@
+name: selectable-input
+
+on:
+  workflow_dispatch:
+   inputs:
+     selection:
+       type: choice
+       description: 'select from options'
+       required: true
+       options:
+         - hello-A
+         - hello-B
+         - hello-C
+    branches: [ main ]
+
+jobs:
+
+  main-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo ${{ github.event.inputs.selection }}
+
