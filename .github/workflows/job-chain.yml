@@ -26,6 +26,15 @@ jobs:
     outputs:
       timestamp: ${{ steps.set-variables.outputs.timestamp }}
 
+  main-job:
+    needs: pre-job
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        project: [aaa, bbb, ccc]
+    steps:
+      - run: echo "parallel step ${{ matrix.project }} with variable ${{ needs.pre-job.outputs.timestamp }}"
+
   post-job:
     needs: pre-job
     runs-on: ubuntu-latest
