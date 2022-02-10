@@ -33,7 +33,7 @@ jobs:
       matrix:
         project: [aaa, bbb, ccc]
     steps:
-      - run: echo "parallel step ${{ matrix.project }} with variable ${{ needs.pre-job.outputs.timestamp }}, input-from-dispatch: ${{ github.event.inputs.selection }}"
+      - run: echo "parallel step ${{ matrix.project }} with variable ${{ needs.pre-job.outputs.timestamp }}"
 
   post-job:
     needs: main-job
