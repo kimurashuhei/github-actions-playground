@@ -2,15 +2,15 @@ name: selectable-input
 
 on:
   workflow_dispatch:
-   inputs:
-     selection:
-       type: choice
-       description: 'select from options'
-       required: true
-       options:
-         - hello-A
-         - hello-B
-         - hello-C
+    inputs:
+      selection:
+        type: choice
+        description: 'select from options'
+        required: true
+        options:
+          - hello-A
+          - hello-B
+          - hello-C
     branches: [ main ]
 
 jobs:
