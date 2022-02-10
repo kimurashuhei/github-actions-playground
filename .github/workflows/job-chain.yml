@@ -36,7 +36,7 @@ jobs:
       - run: echo "parallel step ${{ matrix.project }} with variable ${{ needs.pre-job.outputs.timestamp }}"
 
   post-job:
-    needs: main-job
+    needs: [pre-job, main-job]
     runs-on: ubuntu-latest
     steps:
     - name: show variable
