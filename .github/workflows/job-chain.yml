@@ -1,0 +1,35 @@
+name: job-chain
+
+on:
+  workflow_dispatch:
+    inputs:
+      selection:
+        type: choice
+        description: 'select from options'
+        required: true
+        options:
+          - aaa
+          - bbb
+          - ccc
+    branches: [ main ]
+
+jobs:
+
+  pre-job:
+    runs-on: ubuntu-latest
+    steps:
+    - name: set-variables
+      id: set-variables
+      run: |
+        EXAMPLE_TIMESTAMP=$(echo "$(date +%Y%m%d%H%M%S)")
+        echo "::set-output name=timestamp::$EXAMPLE_TIMESTAMP"
+    outputs:
+      timestamp: ${{ steps.set-variables.outputs.timestamp }}
+
+  post-job:
+    needs: pre-job
+    runs-on: ubuntu-latest
+    steps:
+    - name: show variable
+      run: echo "${{ needs.pre-job.outputs.timestamp }}"
+
