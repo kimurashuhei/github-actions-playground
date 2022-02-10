@@ -8,9 +8,9 @@ on:
         description: 'select from options'
         required: true
         options:
-          - aaa
-          - bbb
-          - ccc
+          - hello-A
+          - hello-B
+          - hello-C
     branches: [ main ]
 
 jobs:
@@ -33,10 +33,10 @@ jobs:
       matrix:
         project: [aaa, bbb, ccc]
     steps:
-      - run: echo "parallel step ${{ matrix.project }} with variable ${{ needs.pre-job.outputs.timestamp }}"
+      - run: echo "parallel step ${{ matrix.project }} with variable ${{ needs.pre-job.outputs.timestamp }}, input-from-dispatch: ${{ github.event.inputs.selection }}"
 
   post-job:
-    needs: pre-job
+    needs: main-job
     runs-on: ubuntu-latest
     steps:
     - name: show variable
