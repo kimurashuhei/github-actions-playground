@@ -27,7 +27,11 @@ jobs:
           - [ddd, eee, fff]
           - [ggg, hhh, iii]
     steps:
-      - run: echo "parallel step ${{ fromJson(matrix.project) }} with variable ${{ needs.pre-job.outputs.timestamp }}"
+      - run: |
+          for p in ${{ matrix.project }}
+          do
+            echo "parallel step $p with variable ${{ needs.pre-job.outputs.timestamp }}"
+          done
 
   post-job:
     needs: [pre-job, main-job]
