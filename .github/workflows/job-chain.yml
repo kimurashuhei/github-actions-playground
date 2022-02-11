@@ -28,7 +28,7 @@ jobs:
           - [ggg, hhh, iii]
     steps:
       - run: |
-          for p in ${{ matrix.project }}
+          for p in ${{ join(matrix.project, " ") }}
           do
             echo "parallel step $p with variable ${{ needs.pre-job.outputs.timestamp }}"
           done
