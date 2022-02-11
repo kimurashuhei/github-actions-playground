@@ -22,9 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        project: [aaa, bbb, ccc]
+        project:
+          - [aaa, bbb, ccc]
+          - [ddd, eee, fff]
+          - [ggg, hhh, iii]
     steps:
-      - run: echo "parallel step ${{ matrix.project }} with variable ${{ needs.pre-job.outputs.timestamp }}"
+      - run: echo "parallel step ${{ fromJson(matrix.project) }} with variable ${{ needs.pre-job.outputs.timestamp }}"
 
   post-job:
     needs: [pre-job, main-job]
