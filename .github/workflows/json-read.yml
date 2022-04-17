@@ -8,6 +8,13 @@ jobs:
 
   main-job:
     runs-on: ubuntu-latest
+
     steps:
-      - run: echo "skeleton"
+      - name: checkout
+        uses: actions/checkout@v2
+
+      - id: example-json
+        run: echo "::set-output name=example::$(cat ./json-read/example.json | tr -d '\n')"
+
+      - run: echo ${{ fromJson(steps.example-json.outputs.example).target-a }}
 
