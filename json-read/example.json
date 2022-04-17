@@ -1,0 +1,10 @@
+{
+  "target-a": {
+    "var1": "1a",
+    "var2": "2a"
+  },
+  "target-b": {
+    "var1": "1b",
+    "var2": "2b"
+  }
+}

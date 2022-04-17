@@ -1,0 +1,13 @@
+name: json-read
+
+on:
+  workflow_dispatch:
+    branches: [ main ]
+
+jobs:
+
+  main-job:
+    runs-on: ubuntu-latest
+    steps:
+      - run: echo "skeleton"
+
