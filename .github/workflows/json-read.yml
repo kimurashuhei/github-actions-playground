@@ -16,5 +16,5 @@ jobs:
       - id: example-json
         run: echo "::set-output name=example::$(cat ./json-read/example.json | tr -d '\n')"
 
-      - run: echo ${{ fromJson(steps.example-json.outputs.example).target-a }}
+      - run: echo ${{ fromJson(steps.example-json.outputs.example).target-a.var1 }}
 
