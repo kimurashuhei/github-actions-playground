@@ -19,4 +19,5 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - run: echo ${{ github.event.inputs.selection }}
+      - run: env
 
