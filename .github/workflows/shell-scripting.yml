@@ -1,4 +1,4 @@
-name: json-read
+name: shell-scripting
 
 on:
   workflow_dispatch:
